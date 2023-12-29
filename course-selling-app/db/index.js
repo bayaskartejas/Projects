@@ -1,8 +1,11 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const zod = require("zod")
+const { DB_USER, DB_PASSWORD, DB_CLUSTER, DB_NAME } = process.env;
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://tejasbayaskar:Omboss8506%40@cluster0.fhjtmo2.mongodb.net/course_app');
+let connectionString = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_CLUSTER}/${DB_NAME}`
+mongoose.connect(connectionString);
 
 // Define schemas
 
